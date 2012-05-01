@@ -8,10 +8,15 @@ describe "Static pages" do
       visit '/static_pages/home'
       page.should have_selector('h1', :text=>'Rad Rails')
     end
-    
-    it "should have the title 'Home'" do
+
+    it "should have base title" do
       visit '/static_pages/home'
-      page.should have_selector('title', :text=>'| Home')
+      page.should have_selector('title', :text=>'Ruby On Rails Rad Rails')
+    end
+
+    it "should not have a custom page title" do
+      visit '/static_pages/home'
+      pages.should_not have_selector('title', :text=>'| Home')
     end
   end
 
@@ -21,7 +26,7 @@ describe "Static pages" do
       visit '/static_pages/help'
       page.should have_selector('h1', :text=>'Help')
     end
-    
+
     it "should have the title 'Help'" do
       visit '/static_pages/help'
       page.should have_selector('title', :text=>'| Help')
@@ -34,7 +39,7 @@ describe "Static pages" do
       visit '/static_pages/about'
       page.should have_selector('h1', :text=>'About Us')
     end
-    
+
     it "should have the title 'About us'" do
       visit '/static_pages/about'
       page.should have_selector('title', :text=>'| About Us')
